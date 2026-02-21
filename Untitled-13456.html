@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miku's World ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            /* Nền màu hồng anime cũ của Miku */
+            background: url('https://wallpapercave.com/wp/wp12282463.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Hiệu ứng hoa rơi */
+        #flower-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            background-color: rgba(255, 209, 220, 0.8);
+            border-radius: 150% 0 150% 0;
+            animation: fall linear forwards;
+            filter: drop-shadow(0 0 5px white);
+        }
+
+        @keyframes fall {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0.8; }
+            100% { top: 110%; transform: translateX(150px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Khung kính trong suốt */
+        .glass-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 35px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 45px 30px;
+            text-align: center;
+            /* Tăng chiều rộng một chút để chứa 4 icon hàng ngang đẹp hơn */
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- CSS CHO PHẦN TÊN GÕ CHỮ --- */
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem; /* Giảm size chữ xíu để tên dài không bị tràn */
+            color: #ffffff;
+            margin: 0 0 15px;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.9);
+            min-height: 1.2em; /* Giữ chiều cao cố định để không bị giật khi gõ */
+        }
+
+        /* Hiệu ứng con trỏ nhấp nháy ở cuối chữ */
+        .typewrite > .wrap {
+            border-right: 0.08em solid #fff;
+            padding-right: 5px;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fff; }
+        }
+
+        p {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* --- CHỈNH SỬA BỐ CỤC LƯỚI THÀNH 1 HÀNG NGANG --- */
+        .grid-links {
+            display: flex; /* Dùng flex để xếp hàng ngang */
+            justify-content: center; /* Căn giữa hàng */
+            gap: 15px; /* Khoảng cách giữa các icon */
+            flex-wrap: wrap; /* Để nếu màn hình quá nhỏ thì nó tự xuống dòng chứ không bị lỗi */
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65px; /* Giảm kích thước icon một chút cho vừa vặn 4 cái */
+            height: 65px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-10px) rotate(10deg);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Màu sắc icon khi hover */
+        .facebook:hover i { color: #1877F2; }
+        .discord:hover i  { color: #5865F2; }
+        .zalo:hover i     { color: #0068FF; }
+        .github:hover i   { color: #333; }
+        
+        .zalo i { font-weight: bold; font-family: sans-serif; font-style: normal; }
+
+    </style>
+</head>
+<body>
+
+    <div id="flower-container"></div>
+
+    <div class="glass-card">
+        <h1>
+            Helluu, tui là 
+            <span class="typewrite" data-period="2000" data-type='[ "Vyse ✨", "Bạn Ngọc Giấu Tên 🤫", "Đinh Ngọc 🌸", "Ngọc Ngơ 🐧" ]'>
+                <span class="wrap"></span>
+            </span>
+        </h1>
+        <p>Kết nối với tớ qua các mạng xã hội bên dưới nhée</p>
+
+        <div class="grid-links">
+            <a href="https://www.facebook.com/share/1Af8rcDUkT/?mibextid=wwXIfr" target="_blank" class="social-icon facebook" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://discord.com/users/1367818660910993480" target="_blank" class="social-icon discord" title="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="http://zalo.me/0773468586" target="_blank" class="social-icon zalo" title="Zalo">
+                <i>Z</i>
+            </a>
+            <a href="https://github.com/muoncopclamcoder" target="_blank" class="social-icon github" title="Github">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const size = Math.random() * 15 + 10;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.getElementById('flower-container').appendChild(petal);
+            setTimeout(() => { petal.remove(); }, 10000);
+        }
+        setInterval(createPetal, 300);
+    </script>
+
+    <script>
+        var TxtType = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100; // Tốc độ gõ ngẫu nhiên cho tự nhiên
+
+            if (this.isDeleting) { delta /= 2; } // Tốc độ xóa nhanh hơn
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period; // Dừng lại một chút khi gõ xong
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500; // Dừng lại một chút trước khi gõ từ mới
+            }
+
+            setTimeout(function() {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function() {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i=0; i<elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                  new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // CSS phụ để tránh bị giật layout khi chưa load JS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script>
+
+</body>
+</html>
